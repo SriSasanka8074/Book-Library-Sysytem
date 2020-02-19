@@ -1,1 +1,49 @@
-<p>book works!</p>
+<h4 style="text-align: center;">{{title}}</h4>
+<form autocomplete="off"
+  [formGroup]="bookForm"
+  #bookFormRef="ngForm"
+  (ngSubmit)="saveBookDetails(bookFormRef);"
+>
+  <div>
+    <label id="bookName" style="padding-top: 0.5rem">Name</label><br/><br/>
+    <input type="text"
+      class="form-group"
+      formControlName="bookName"
+      required
+    >
+  </div>
+  <br/>
+  <div>
+    <label id="bookDescription" style="padding-top: 5rem">Description</label><br/><br/>
+
+    <textarea class="form-group"
+      cols="30"
+      rows="10"
+      formControlName="bookDescription"
+    ></textarea>
+  </div>
+  <br/>
+  <div>
+    <label id="count" style="padding-top: 0.5rem">Count</label><br/><br/>
+    <input type="number"
+      class="form-group"
+      formControlName="count"
+      required
+    >
+  </div>
+  <br/>
+  <div>
+    <label id="author" style="padding-top: 0.5rem">Author</label><br/><br/>
+    <input type="text"
+      class="form-group"
+      formControlName="author"
+      required
+    >
+  </div>
+  <br/>
+  <div id="action">
+    <button id="save">Save</button>
+    <button id="reset" type="button">Reset</button>
+  </div>
+  <br/>
+</form>
