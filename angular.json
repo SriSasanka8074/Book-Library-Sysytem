@@ -3,7 +3,7 @@
   "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "Book-Library-System": {
+    "book-library-system": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Book-Library-System",
+            "outputPath": "dist/book-library-system",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Book-Library-System:build"
+            "browserTarget": "book-library-system:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Book-Library-System:build:production"
+              "browserTarget": "book-library-system:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Book-Library-System:build"
+            "browserTarget": "book-library-system:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Book-Library-System:serve"
+            "devServerTarget": "book-library-system:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Book-Library-System:serve:production"
+              "devServerTarget": "book-library-system:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Book-Library-System"
+  "defaultProject": "book-library-system"
 }
