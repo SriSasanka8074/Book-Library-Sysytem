@@ -8,14 +8,13 @@ import { ManageBooksComponent } from './manage-books/manage-books.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// import { SearchPipe } from './search.pipe';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     ManageBooksComponent,
-    // SearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -24,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

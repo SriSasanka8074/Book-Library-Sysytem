@@ -23,6 +23,7 @@ export class ManageBooksComponent implements OnInit {
   title = 'Manage Books';
   faEye = faEye;
   faEdit = faEdit;
+  search = '';
 
   ngOnInit() {
     this.createFormGroup();

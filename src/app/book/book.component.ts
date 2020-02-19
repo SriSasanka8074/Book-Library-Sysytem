@@ -80,6 +80,9 @@ export class BookComponent implements OnInit {
         const data: any = res;
         data.ismodify = 1;
         this.bookForm.setValue(data);
+        if (this.mode === 'view') {
+          this.bookForm.disable();
+        }
       }
     }, error => {
     });

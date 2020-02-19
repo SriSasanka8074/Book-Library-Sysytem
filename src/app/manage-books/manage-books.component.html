@@ -9,10 +9,11 @@
 <br>
 <div>
   <div>
-    <input type="number"
+    <input type="text"
       class="form-group"
       id = "search"
-      #search
+      #searchText
+      [(ngModel)]="search"
       placeholder="Search"
     >
   </div>
@@ -29,7 +30,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of booksData; index as i;">
+        <tr *ngFor="let item of booksData | filter: search; index as i;">
           <td style="width: 5%;"><span>{{i+1}}</span></td>
           <td style="width: 30%;"><span>{{item.bookName}}</span></td>
           <td style="width: 30%;"><span>{{item.author}}</span></td>

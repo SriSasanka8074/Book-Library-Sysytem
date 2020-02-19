@@ -42,8 +42,8 @@
   </div>
   <br/>
   <div id="action">
-    <button id="save">Save</button>
-    <button id="reset" type="button">Reset</button>
+    <button id="save" [disabled]="mode === 'view' || bookForm.invalid">Save</button>
+    <button id="reset" type="button" [disabled]="mode === 'view'">Reset</button>
   </div>
   <br/>
 </form>
