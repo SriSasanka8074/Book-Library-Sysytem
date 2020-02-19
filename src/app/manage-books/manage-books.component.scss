@@ -1,0 +1,29 @@
+table {
+  padding: 0;
+  width: 100%;
+  border: none;
+  border-spacing: 0;
+}
+th {
+  background-color: #1967d2;
+  color: white;
+  text-align: left;
+  line-height: 3rem;
+}
+td {
+  padding-top: 1rem;
+}
+.form-group {
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #dadce0;
+  border-radius: 5px;
+  box-shadow: 0 0 black;
+}
+.form-group#search {
+  float: right;
+  padding: 5px;
+  border: 1px solid #dadce0;
+  border-radius: 5px;
+  box-shadow: 0 0 black;
+}

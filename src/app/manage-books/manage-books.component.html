@@ -1,1 +1,50 @@
-<p>manage-books works!</p>
+<h4 style="text-align: center;">{{title}}</h4>
+<form autocomplete="off"
+  [formGroup]="manageBooksForm"
+  (ngSubmit)="getBooksList();"
+  autocomplete="off"
+>
+
+</form>
+<br>
+<div>
+  <div>
+    <input type="number"
+      class="form-group"
+      id = "search"
+      #search
+      placeholder="Search"
+    >
+  </div>
+  <br><br>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 5%;"><span>#</span></th>
+          <th style="width: 30%;"><span>Book</span></th>
+          <th style="width: 30%;"><span>Author</span></th>
+          <th style="width: 5%;"><span>View</span></th>
+          <th style="width: 5%;"><span>Edit</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of booksData; index as i;">
+          <td style="width: 5%;"><span>{{i+1}}</span></td>
+          <td style="width: 30%;"><span>{{item.bookName}}</span></td>
+          <td style="width: 30%;"><span>{{item.author}}</span></td>
+          <td style="width: 5%;cursor: pointer;">
+            <span (click)="navigateToBookMaster(true, item.id);">
+              <fa-icon [icon]="faEye" size="lg" ></fa-icon>
+            </span>
+          </td>
+          <td style="width: 5%;cursor: pointer;">
+            <span (click)="navigateToBookMaster(false, item.id);">
+              <fa-icon [icon]="faEdit" size="lg" ></fa-icon>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
