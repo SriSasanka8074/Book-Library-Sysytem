@@ -78,7 +78,7 @@ export class BookComponent implements OnInit {
     this.httpClient.post(url, obj).subscribe(res => {
       if (res) {
         const data: any = res;
-        data.ismodify = 0;
+        data.ismodify = 1;
         this.bookForm.setValue(data);
       }
     }, error => {
