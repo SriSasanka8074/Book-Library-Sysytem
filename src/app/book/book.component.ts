@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-book',
@@ -19,7 +20,7 @@ export class BookComponent implements OnInit {
   ) { }
 
   bookForm: FormGroup;
-  title = 'Book Master';
+  title = 'Book Details';
   @ViewChild(HTMLButtonElement, {static: true}) saveBookDetailsButtonRef: HTMLButtonElement;
   mode: string;
   id: number;
@@ -30,8 +31,11 @@ export class BookComponent implements OnInit {
       if (param) {
         const paramData: any = param;
         this.mode = paramData.params.mode;
+        console.log(this.mode);
         this.id = Number(paramData.params.id);
-        this.getBookDetailsById(this.id);
+        if (this.mode) {
+          this.getBookDetailsById(this.id);
+        }
       }
     });
   }
@@ -47,23 +51,42 @@ export class BookComponent implements OnInit {
     });
   }
 
-  saveBookDetails(formRef) {
+  saveBookDetails(formRef, saveBookDetailsButtonRef: HTMLButtonElement) {
     if (this.bookForm.valid) {
-      this.saveBookDetailsButtonRef.disabled = true;
+      saveBookDetailsButtonRef.disabled = true;
       let obj = {};
       obj = this.bookForm.value;
-      const url = '';
+      const url = environment.serverUrl + 'saveBookDetails';
       this.httpClient.post(url, obj).subscribe(res => {
         if (res) {
-          this.saveBookDetailsButtonRef.disabled = false;
-          Swal.fire('Success!', 'Book Details saved successfully', 'success');
+          saveBookDetailsButtonRef.disabled = false;
+          if (this.mode === undefined) {
+            Swal.fire('Success!', 'Book Details saved successfully', 'success').then(result => {
+              if (result) {
+                this.resetForm(formRef);
+              }
+            });
+          } else {
+            Swal.fire('Success!', 'Book Details modified successfully', 'success').then(result => {
+              if (result) {
+                this.resetForm(formRef);
+                this.router.navigate(['/manage-books']);
+              }
+            });
+          }
         } else {
-          this.saveBookDetailsButtonRef.disabled = false;
+          saveBookDetailsButtonRef.disabled = false;
           Swal.fire('Failed!', 'Failed to save Book Details', 'error');
         }
       }, error => {
+        saveBookDetailsButtonRef.disabled = false;
         Swal.fire('Failed!', 'Failed to save Book Details', 'error');
       });
+    } else {
+      this.bookForm.get('bookName').markAsTouched();
+      this.bookForm.get('bookName').updateValueAndValidity();
+      this.bookForm.get('count').markAsTouched();
+      this.bookForm.get('count').updateValueAndValidity();
     }
   }
 
@@ -74,7 +97,7 @@ export class BookComponent implements OnInit {
   getBookDetailsById(id) {
     const obj: any = {};
     obj.id = id;
-    const url = '';
+    const url = environment.serverUrl + 'getBookDetailsById';
     this.httpClient.post(url, obj).subscribe(res => {
       if (res) {
         const data: any = res;

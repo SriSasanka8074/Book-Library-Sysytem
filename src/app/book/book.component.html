@@ -2,7 +2,7 @@
 <form autocomplete="off"
   [formGroup]="bookForm"
   #bookFormRef="ngForm"
-  (ngSubmit)="saveBookDetails(bookFormRef);"
+  (ngSubmit)="saveBookDetails(bookFormRef, saveBookDetailsButtonRef);"
 >
   <div>
     <label id="bookName" style="padding-top: 0.5rem">Name</label><br/><br/>
@@ -12,6 +12,12 @@
       required
     >
   </div>
+  <p
+    class="errorMsg"
+    *ngIf="bookForm.get('bookName').hasError('required') && (bookForm.get('bookName').touched || bookForm.get('bookName').dirty)"
+  >
+    Book Name is required
+  </p>
   <br/>
   <div>
     <label id="bookDescription" style="padding-top: 5rem">Description</label><br/><br/>
@@ -29,8 +35,15 @@
       class="form-group"
       formControlName="count"
       required
+      #count
     >
   </div>
+  <p
+    class="errorMsg"
+    *ngIf="bookForm.get('count').hasError('required') && bookForm.get('count').touched"
+  >
+    Count is required
+  </p>
   <br/>
   <div>
     <label id="author" style="padding-top: 0.5rem">Author</label><br/><br/>
@@ -42,8 +55,8 @@
   </div>
   <br/>
   <div id="action">
-    <button id="save" [disabled]="mode === 'view' || bookForm.invalid">Save</button>
-    <button id="reset" type="button" [disabled]="mode === 'view'">Reset</button>
+    <button id="save" #saveBookDetailsButtonRef [disabled]="mode === 'view'">Save</button>
+    <button id="reset" type="button" [disabled]="mode === 'view'" (click)="resetForm(bookFormRef);">Reset</button>
   </div>
   <br/>
 </form>

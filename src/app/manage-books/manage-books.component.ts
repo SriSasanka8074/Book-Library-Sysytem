@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import {faEdit} from '@fortawesome/free-regular-svg-icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-manage-books',
@@ -38,7 +39,7 @@ export class ManageBooksComponent implements OnInit {
   }
 
   getBooksList() {
-    const url = '';
+    const url = environment.serverUrl + 'getBookDetails';
     const obj: any = this.manageBooksForm.value;
     this.httpClient.get(url).subscribe(res => {
       if (res) {

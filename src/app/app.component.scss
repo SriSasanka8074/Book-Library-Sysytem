@@ -1,0 +1,32 @@
+.header {
+  background-color: #1967d2;
+  color: white;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+}
+
+#bookDetails {
+  margin-left: auto;
+  cursor: pointer;
+}
+#bookDetails.active {
+  margin-left: auto;
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+}
+
+#manageBookDetails {
+  margin-left: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+#manageBookDetails.active {
+  margin-left: 1rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  color: red;
+  font-weight: bold;
+}
