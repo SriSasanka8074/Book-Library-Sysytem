@@ -21,7 +21,7 @@ export class ManageBooksComponent implements OnInit {
 
   manageBooksForm: FormGroup;
   booksData: Array<any> = [];
-  title = 'Manage Books';
+  title = 'Manage Book Details';
   faEye = faEye;
   faEdit = faEdit;
   search = '';
